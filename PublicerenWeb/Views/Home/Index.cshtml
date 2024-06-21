@@ -1,0 +1,41 @@
+﻿@model IEnumerable<PublicerenWeb.Entities.Actiecode>
+@{
+    ViewData["Title"] = "Actiecodes";
+}
+<h1>Actiecodes</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <label asp-for="@Model.FirstOrDefault().Naam"></label>
+            </th>
+            <th>
+                <label asp-for="@Model.FirstOrDefault().GeldigVanDatum"></label>
+            </th>
+            <th>
+                <label asp-for="@Model.FirstOrDefault().GeldigTotDatum"></label>
+            </th>
+            <th>
+                <label asp-for="@Model.FirstOrDefault().IsEenmalig"></label>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.Naam
+            </td>
+            <td>
+                @item.GeldigVanDatum.ToShortDateString()
+            </td>
+            <td>
+                @item.GeldigTotDatum.ToShortDateString()
+            </td>
+            <td>
+                <input type="checkbox" asp-for="@item.IsEenmalig" disabled="disabled" />
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
