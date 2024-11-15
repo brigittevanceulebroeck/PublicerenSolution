@@ -5,14 +5,9 @@ using System.Diagnostics;
 
 namespace PublicerenWeb.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController(IActiecodeRepository actiecodeRepository) : Controller
     {
-        private readonly IActiecodeRepository actiecodeRepository;
-
-        public HomeController(IActiecodeRepository actiecodeRepository)
-        {
-           this.actiecodeRepository = actiecodeRepository;
-        }
+        private readonly IActiecodeRepository actiecodeRepository = actiecodeRepository;
 
         public async Task<IActionResult> Index()
         {
